@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Kotlin</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -24,8 +24,227 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+
+				<section>
+					<h2>Kotlin</h2>
+					<h5>Das bessere Java?</h5>
+				</section>
+
+				<section>
+					<section>
+						<h3>Über mich</h3>
+						<ul>
+							<li>Hilmar Wiegand</li>
+							<li>Fullstack Entwickler bei Acomodeo.com</li>
+							<li>Kotlin seit 2 Jahren</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Über Acomodeo</h3>
+						<ul>
+							<li>Online-Portal und Provider für Serviced Apartments</li>
+							<li>Microservice-Architektur</li>
+							<li>Frontends in Angular/Typescript</li>
+							<li>Backends in Kotlin mit Spring/MongoDB</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Kotlin</h3>
+						<p>JVM-Sprache von JetBrains (IntelliJ, YouTrack)</p>
+						<p>Erstveröffentlichung 2011</p>
+						<blockquote>
+							Concise, simple and very easy to read (and write)
+						</blockquote>
+					</section>
+
+					<section>
+						<ul>
+							<li>Reduzierung von Boilerplate-Code</li>
+							<li>Bewährte Konventionen als Sprachkonstrukte</li>
+							<li>Vereinfachung von oft benutzten Operationen</li>
+							<li>Sicherheit vor Null-Pointer-Exceptions</li>
+							<li>Funktionale Programmierung</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h3>Beispiel-Projekt</h3>
+					<p>Tierhandlung "Bunter Hund"</p>
+					<p>Spring Boot und MongoDB</p>
+					<p>Entities: Tier, TierArt, FutterVorrat, Mitarbeiter...</p>
+				</section>
+
+				<section>
+					<section>
+						<h3>Syntax und Unterschiede zu Java</h3>
+						<ul>
+							<li>Keine Semikolons</li>
+							<li>
+								Keine "unnötigen" (geschweiften) Klammern<br>
+								<pre>class EineKlasse // korrekt!</pre>
+							</li>
+							<li>Typen-Inferenz</li>
+							<li>Public by default</li>
+							<li>
+								Keine Vererbung by default<br>
+								<pre>
+class KannNichtErben
+class UnterKlasse : KannNichtErben // fehler!
+								</pre>
+								<pre>
+open class KannErben
+class UnterKlasse : KannErben // erlaubt
+								</pre>
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Syntax und Unterschiede zu Java</h3>
+						<ul>
+							<li>Mehrere public Klassen/Interfaces per Datei</li>
+							<li>
+								Methoden außerhalb von Klassen erlaubt<br>
+								z.B. <pre>listOf(), mapOf(), error()</pre>
+							</li>
+							<li>Neue keywords, neue Konstrukte, ...</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h3>Null Safety</h3>
+				</section>
+
+				<section>
+					<section>
+						<h3>Data Klassen</h3>
+					</section>
+
+					<section>
+						<h3>Getter/Setter/Properties</h3>
+					</section>
+
+					<section>
+						<h3>Sealed Klassen</h3>
+					</section>
+				</section>
+
+				<section>
+					<h3>Extension Functions</h3>
+				</section>
+
+				<section>
+					<h3>String Formatierung/Literals</h3>	
+				</section>
+
+				<section>
+					<h3>Immutability</h3>
+				</section>
+
+				<section>
+					<section>
+						<h3>Die Kotlin-Standardlibrary</h3>
+					</section>
+
+					<section>
+						<h3>Collection Funktionen</h3>
+					</section>
+
+					<section>
+						<h3>Umgang mit Nullable-Werten</h3>
+					</section>
+
+					<section>
+						<h3>Nützliche Funktionen</h3>
+					</section>
+
+					<section>
+						<h3>Lambdas</h3>
+					</section>
+				</section>
+
+				<section>
+					<h3>Performance</h3>
+					<ul>
+						<li>Optimierung von Funktionen auf Collections</li>
+						<li>Async und Parallelisierung mit Green Threads</li>
+						<li>Sicherheit bei Concurrency durch Immutability</li>
+						<li>Einfache Optimisierungen mit Sprachkonstrukten (z.B. tail recursion)</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h3>Domain Specific Languages</h3>
+					</section>
+
+					<section>
+						Beispiel: Permissions
+					</section>
+
+					<section>
+						Beispiel: HTML
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Unit Testing</h3>
+						<ul>
+							<li>Gewohnte Werkzeuge aus Spring/anderen Libraries</li>
+							<li>Literale als Funktionsnamen</li>
+						</ul>
+						<pre>
+fun `Funktion x sollte korrektes Ergebnis liefern`() {
+	/* ...code */
+}
+						</pre>
+					</section>
+
+					<section>
+						Beispiele
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Interoperabilität mit Java</h3>
+						<ul>
+							<li>Zugriff auf das <b>gesamte</b> Java-Ökosystem</li>
+							<li>Java => Kotlin</li>
+							<li>Kotlin => Java</li>
+							<li>Plugins für alle großen IDEs und (einfache) Kommandozeilen-Kompilierung</li>
+							<li><pre>import as</pre></li>
+						</ul>
+					</section>
+
+					<section>
+						<p>Unterstützung von großen Firmen</p>
+						<ul>
+							<li>Pivotal (Spring)</li>
+							<li>Google und Android</li>
+							<li>Gradle</li>
+							<li>Atlassian, Uber, Pinterest, Evernote...</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<h2>Fragen?</h2>
+				</section>
+
+				<section>
+					<h2>Danke fürs Zuhören!</h2><br><br>
+					<a href="https://github.com/happenslol/bunterhund">github.com/happenslol/bunterhund</a><br><br>
+					<a href="https://kotlin-slides.happens.lol">kotlin-slides.happens.lol</a><br><br>
+					<a href="https://kotlin-slides.happens.lol/?print-pdf">kotlin-slides.happens.lol/?print-pdf</a>
+				</section>
 			</div>
 		</div>
 
