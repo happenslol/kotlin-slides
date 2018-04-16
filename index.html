@@ -48,7 +48,7 @@
           <section>
             <h3>Über Acomodeo</h3>
             <ul>
-              <li>Online-Portal und Provider für Serviced Apartments</li>
+              <li>Online-Portal, Technologieanbieter und Vermittler für Serviced Apartments</li>
               <li>Microservice-Architektur</li>
               <li>Frontends in Angular/Typescript</li>
               <li>Backends in Kotlin mit Spring/MongoDB</li>
@@ -56,17 +56,20 @@
           </section>
         </section>
 
-        <section>
-          <section>
+        <section id="about">
+          <section id="about1">
             <h3>Kotlin</h3>
             <p>JVM-Sprache von JetBrains (IntelliJ, YouTrack)</p>
             <p>Erstveröffentlichung 2011</p>
+            <p>Offizieller Release in 2016</p>
+            <br>
             <blockquote>
+              <i class="fas fa-quote-left fa-1g fa-pull-left fa-border"></i>
               Concise, simple and very easy to read (and write)
             </blockquote>
           </section>
 
-          <section>
+          <section id="about2">
             <ul>
               <li>Reduzierung von Boilerplate-Code</li>
               <li>Bewährte Konventionen als Sprachkonstrukte</li>
@@ -143,7 +146,7 @@
             <pre><code data-trim class="kotlin">
               val test = { "Hallo Welt!" }
 
-              val test = if (bedingung) "Hello" else "Welt"
+              val test = if (bedingung) "Hallo" else "Welt"
             </code></pre>
 
             <br><br>
@@ -353,32 +356,53 @@
           </section>
         </section>
 
-        <section>
-          <h3>String Formatierung/Literals</h3>	
+        <section id="stringform">
+          <section id="stringform1">
+            <h3>String Formatierung</h3>	
+            
+            <pre><code class="kotlin" data-trim>
+            fun Tier.alterText(): String =
+              "${this.name} ist ${this.alter} Jahre alt."
+            </code></pre>
+
+            <pre class="inline-code"><code class="kotlin">toString()</code></pre> automatisch!
+          </section>
+
+          <section id="stringform2">
+            <h3>String literals</h3>
+
+            <pre><code class="kotlin" data-trim>
+              val freitext = """
+                Hierdrin kann beliebiger text stehen,
+                auch in "Anführungszeichen".
+                Sogar neue Zeilen und viel mehr ist erlaubt!
+              """
+            </code></pre>
+          </section>
         </section>
 
-        <section>
+        <section id="immut">
           <h3>Immutability</h3>
         </section>
 
-        <section>
-          <section>
+        <section id="std">
+          <section id="std1">
             <h3>Die Kotlin-Standardlibrary</h3>
           </section>
 
-          <section>
+          <section id="std2">
             <h3>Collection Funktionen</h3>
           </section>
 
-          <section>
+          <section id="std3">
             <h3>Umgang mit Nullable-Werten</h3>
           </section>
 
-          <section>
+          <section id="std4">
             <h3>Nützliche Funktionen</h3>
           </section>
 
-          <section>
+          <section id="std5">
             <h3>Lambdas</h3>
           </section>
         </section>
@@ -393,22 +417,74 @@
           </ul>
         </section>
 
-        <section>
-          <section>
+        <section id="dsl">
+          <section id="dsl1">
             <h3>Domain Specific Languages</h3>
           </section>
 
-          <section>
-            Beispiel: Permissions
+          <section id="dsl2">
+            <h4>Beispiel: Berechtigungen</h4>
+            <pre><code class="kotlin" data-trim>
+            fun Permissions(
+              builder: PermissionBuilder.() -> Unit
+            ): Permissions {
+              val builderObject = PermissionBuilder()
+              builderObject.builder()
+              return builderObject.build()
+            }
+            </code></pre>
+
+            <pre><code class="kotlin" data-trim>
+            class PermissionBuilder {
+              // ...
+          
+              infix fun PermissionGroup.allowedTo(perm: Permission) {
+                permissions = permissions.filterKeys { it != this } + mapOf(
+                    this to perm
+                )
+              }
+          
+              // ...              
+            }
+            </code></pre>
           </section>
 
-          <section>
-            Beispiel: HTML
+          <section id="dsl3">
+            <h4>Beispiel: Berechtigungen</h4>
+            <pre><code class="kotlin" data-trim>
+            val permissions = Permissions {
+              PermissionGroup.rates allowedTo Permission.none
+              PermissionGroup.inventory allowedTo Permission.read
+              PermissionGroup.bookings allowedTo Permission.write
+            }
+            </code></pre>
+          </section>
+
+          <section id="dsl4">
+            <h4>Beispiel: HTML</h4>
+            <pre><code class="kotlin" data-trim>
+            val html = document.create.html {
+              head {
+                title { +"HTML in Kotlin!" }
+              }
+
+              body {
+                div {
+                  a("https://kotlinlang.org") {
+                    target = ATarget.blank
+                    +"Offizielle Kotlin Seite"
+                  }
+                }
+              }
+            }
+            </code></pre>
+            <br>
+            <a href="https://github.com/Kotlin/kotlinx.html">github.com/kotlin/kotlinx.html</a>
           </section>
         </section>
 
-        <section>
-          <section>
+        <section id="testing">
+          <section id="testing1">
             <h3>Unit Testing</h3>
             <ul>
               <li>Gewohnte Werkzeuge aus Spring/anderen Libraries</li>
@@ -421,24 +497,36 @@
             </code></pre>
           </section>
 
-          <section>
-            Beispiele
+          <section id="testing2">
+            <h4>Beispiel aus Bunter Hund</h4>
+            <pre><code data-trim class="kotlin">
+            @Test
+            fun `Soll korrekt eine Liste aller Haustiere von Mitarbeitern ausgeben`() {
+              val beispielHaustiere = testDatenService.mitarbeiterBeispiele()
+                .mapNotNull { it.haustierName }.toSet()
+      
+              val resultat = mitarbeiterService.mitarbeiterHaustiere()
+                .map { it.name }.toSet()
+      
+              assertEquals(beispielHaustiere, resultat)
+            }
+            </code></pre>
           </section>
         </section>
 
-        <section>
-          <section>
+        <section id="interop">
+          <section id="interop1">
             <h3>Interoperabilität mit Java</h3>
             <ul>
               <li>Zugriff auf das <b>gesamte</b> Java-Ökosystem</li>
-              <li>Java => Kotlin</li>
-              <li>Kotlin => Java</li>
+              <li>Java <i class="fas fa-arrow-right fa-xs"></i> Kotlin</li>
+              <li>Kotlin <i class="fas fa-arrow-right fa-xs"></i> Java</li>
               <li>Plugins für alle großen IDEs und (einfache) Kommandozeilen-Kompilierung</li>
               <li><pre><code data-trim class="kotlin">import as</code></pre></li>
             </ul>
           </section>
 
-          <section>
+          <section id="interop2">
             <p>Unterstützung von großen Firmen</p>
             <ul>
               <li>Pivotal (Spring)</li>
