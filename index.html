@@ -1,275 +1,483 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Kotlin</title>
+    <title>Kotlin</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
-		<link rel="stylesheet" href="lib/css/tomorrow-night.css">
+    <!-- custom styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="lib/css/tomorrow-night.css">
 
-				<section>
-					<h2>Kotlin</h2>
-					<h5>Das bessere Java?</h5>
-				</section>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
 
-				<section>
-					<section>
-						<h3>Über mich</h3>
-						<ul>
-							<li>Hilmar Wiegand</li>
-							<li>Fullstack Entwickler bei Acomodeo.com</li>
-							<li>Kotlin seit 2 Jahren</li>
-						</ul>
-					</section>
+        <section>
+          <h2>Kotlin</h2>
+          <h5>Das bessere Java?</h5>
+        </section>
 
-					<section>
-						<h3>Über Acomodeo</h3>
-						<ul>
-							<li>Online-Portal und Provider für Serviced Apartments</li>
-							<li>Microservice-Architektur</li>
-							<li>Frontends in Angular/Typescript</li>
-							<li>Backends in Kotlin mit Spring/MongoDB</li>
-						</ul>
-					</section>
-				</section>
+        <section>
+          <section>
+            <h3>Über mich</h3>
+            <ul>
+              <li>Hilmar Wiegand</li>
+              <li>Fullstack Entwickler bei Acomodeo.com</li>
+              <li>Kotlin seit 2 Jahren</li>
+            </ul>
+          </section>
 
-				<section>
-					<section>
-						<h3>Kotlin</h3>
-						<p>JVM-Sprache von JetBrains (IntelliJ, YouTrack)</p>
-						<p>Erstveröffentlichung 2011</p>
-						<blockquote>
-							Concise, simple and very easy to read (and write)
-						</blockquote>
-					</section>
+          <section>
+            <h3>Über Acomodeo</h3>
+            <ul>
+              <li>Online-Portal und Provider für Serviced Apartments</li>
+              <li>Microservice-Architektur</li>
+              <li>Frontends in Angular/Typescript</li>
+              <li>Backends in Kotlin mit Spring/MongoDB</li>
+            </ul>
+          </section>
+        </section>
 
-					<section>
-						<ul>
-							<li>Reduzierung von Boilerplate-Code</li>
-							<li>Bewährte Konventionen als Sprachkonstrukte</li>
-							<li>Vereinfachung von oft benutzten Operationen</li>
-							<li>Sicherheit vor Null-Pointer-Exceptions</li>
-							<li>Funktionale Programmierung</li>
-						</ul>
-					</section>
-				</section>
+        <section>
+          <section>
+            <h3>Kotlin</h3>
+            <p>JVM-Sprache von JetBrains (IntelliJ, YouTrack)</p>
+            <p>Erstveröffentlichung 2011</p>
+            <blockquote>
+              Concise, simple and very easy to read (and write)
+            </blockquote>
+          </section>
 
-				<section>
-					<h3>Beispiel-Projekt</h3>
-					<p>Tierhandlung "Bunter Hund"</p>
-					<p>Spring Boot und MongoDB</p>
-					<p>Entities: Tier, TierArt, FutterVorrat, Mitarbeiter...</p>
-				</section>
+          <section>
+            <ul>
+              <li>Reduzierung von Boilerplate-Code</li>
+              <li>Bewährte Konventionen als Sprachkonstrukte</li>
+              <li>Vereinfachung von oft benutzten Operationen</li>
+              <li>Sicherheit vor Null-Pointer-Exceptions</li>
+              <li>Funktionale Programmierung</li>
+            </ul>
+          </section>
+        </section>
 
-				<section>
-					<section>
-						<h3>Syntax und Unterschiede zu Java</h3>
-						<ul>
-							<li>Keine Semikolons</li>
-							<li>
-								Keine "unnötigen" (geschweiften) Klammern<br>
-								<pre><code data-trim class="kotlin">
-									// korrekt!
-									class EineKlasse
-								</code></pre>
-							</li>
-							<li>Public by default</li>
-							<li>
-								Keine Vererbung by default<br>
-								<pre><code data-trim class="kotlin">
-									// fehler!
-									class KannNichtErben
-									class UnterKlasse : KannNichtErben
-								</code></pre>
-								<pre><code data-trim class="kotlin">
-									// erlaubt
-									open class KannErben
-									class UnterKlasse : KannErben
-								</code></pre>
-							</li>
-						</ul>
-					</section>
+        <section>
+          <h3>Beispiel-Projekt</h3>
+          <p>Tierhandlung "Bunter Hund"</p>
+          <p>Spring Boot und MongoDB</p>
+          <p>Entities: Tier, TierArt, FutterVorrat, Mitarbeiter...</p>
+        </section>
 
-					<section>
-						<h3>Syntax und Unterschiede zu Java</h3>
-						<ul>
-							<li>Typen-Inferenz</li>
-							<li>Mehrere public Klassen/Interfaces per Datei</li>
-							<li>
-								Methoden außerhalb von Klassen erlaubt<br>
-								z.B. <pre><code data-trim class="kotlin">listOf(), mapOf(), error()</code></pre>
-							</li>
-							<li>Neue keywords, neue Konstrukte, ...</li>
-						</ul>
-					</section>
-				</section>
+        <section>
+          <section id="syntax1">
+            <h3>Syntax und Unterschiede zu Java</h3>
+            <ul>
+              <li>Keine Semikolons</li>
+              <li>
+                Keine "unnötigen" (geschweiften) Klammern<br>
+                <pre><code data-trim class="kotlin">
+                  // korrekt!
+                  class EineKlasse
+                </code></pre>
+              </li>
+              <li>Public by default</li>
+              <li>
+                Keine Vererbung by default<br>
+                <pre><code data-trim class="kotlin">
+                  // fehler!
+                  class KannNichtErben
+                  class UnterKlasse : KannNichtErben
+                </code></pre>
+                <pre><code data-trim class="kotlin">
+                  // erlaubt
+                  open class KannErben
+                  class UnterKlasse : KannErben
+                </code></pre>
+              </li>
+            </ul>
+          </section>
 
-				<section>
-					<h3>Null Safety</h3>
-				</section>
+          <section id="syntax2">
+            <h3>Syntax und Unterschiede zu Java</h3>
+            <ul>
+              <li>Typen-Inferenz (<pre class="inline-code"><code class="kotlin">var</code></pre>/<pre class="inline-code"><code class="kotlin">val</code></pre>)</li>
+              <li>
+                Funktionen<br>
+                <pre><code data-trim class="kotlin">
+                  fun funktionsName(parameter: Typ) : Rückgabe {}
+                </code></pre>
+              </li>
+              <li>
+                Konstruktoren<br>
+                <pre><code data-trim class="kotlin">
+                  val instanzierterTyp = Typ(parameter1, parameter2)
+                </code></pre>
+              </li>
+              <li>Mehrere public Klassen/Interfaces per Datei</li>
+              <li>
+                Methoden außerhalb von Klassen erlaubt<br>
+                <pre><code data-trim class="kotlin">listOf(), mapOf(), error()</code></pre>
+              </li>
+            </ul>
+          </section>
 
-				<section>
-					<section>
-						<h3>Data Klassen</h3>
-					</section>
+          <section id="syntax3">
+            <h3>Syntax und Unterschiede zu Java</h3>
+            <b>Expressions / Assignments</b>
+            <pre><code data-trim class="kotlin">
+              val test = { "Hallo Welt!" }
 
-					<section>
-						<h3>Getter/Setter/Properties</h3>
-					</section>
+              val test = if (bedingung) "Hello" else "Welt"
+            </code></pre>
 
-					<section>
-						<h3>Sealed Klassen</h3>
-					</section>
-				</section>
+            <br><br>
+            <small>Funktionen sind auch Assignments von Expressions!</small>
+            <pre><code data-trim class="kotlin">
+              fun halloWelt(): String = "Hallo Welt!"
 
-				<section>
-					<h3>Extension Functions</h3>
-				</section>
+              val tier = tierMitName("peter")
+            </code></pre>
+          </section>
 
-				<section>
-					<h3>String Formatierung/Literals</h3>	
-				</section>
+          <section id="syntax4">
+            <h3>Syntax und Unterschiede zu Java</h3>
+            <h5>Named parameters!</h5>
 
-				<section>
-					<h3>Immutability</h3>
-				</section>
+            <pre><code data-trim class="kotlin">
+              fun funktionMitVielenParametern(
+                p1: String, p2: Int, p3: Int, p4: String,
+                p5: String = "default", p6: Int = 0
+              ): Typ
 
-				<section>
-					<section>
-						<h3>Die Kotlin-Standardlibrary</h3>
-					</section>
+              val test = funktionMitVielenParametern(
+                p1 = "Hallo Welt",
+                p2 = 13,
+                p3 = 24,
+                p4 = "test",
+                p6 = 14
+              )
+            </code></pre>
+          </section>
+        </section>
 
-					<section>
-						<h3>Collection Funktionen</h3>
-					</section>
+        <section id="null">
+          <section id="null1">
+            <h3>Null Safety</h3>
+          </section>
 
-					<section>
-						<h3>Umgang mit Nullable-Werten</h3>
-					</section>
+          <section id="null2">
+            <pre><code data-trim class="kotlin">
+              fun tierMitName(name: String): Tier?
 
-					<section>
-						<h3>Nützliche Funktionen</h3>
-					</section>
+              val tier = tierMitName("Peter")
 
-					<section>
-						<h3>Lambdas</h3>
-					</section>
-				</section>
+              // fehler!
+              print(tier.art)
+            </code></pre>
+          </section>
 
-				<section>
-					<h3>Performance</h3>
-					<ul>
-						<li>Optimierung von Funktionen auf Collections</li>
-						<li>Async und Parallelisierung mit Green Threads</li>
-						<li>Sicherheit bei Concurrency durch Immutability</li>
-						<li>Einfache Optimisierungen mit Sprachkonstrukten (z.B. tail recursion)</li>
-					</ul>
-				</section>
+          <section id="null3">
+            <h4>Lösung</h4>
+            Safe call <pre class="inline-code"><code class="kotlin">?</code></pre> und Elvis-Operator <pre class="inline-code"><code class="kotlin">?:</code></pre>
+            <pre><code data-trim class="kotlin">
+              fun tierMitName(name: String): Tier?
 
-				<section>
-					<section>
-						<h3>Domain Specific Languages</h3>
-					</section>
+              val tier = tierMitName("Peter")
 
-					<section>
-						Beispiel: Permissions
-					</section>
+              val tierArt = tier?.art ?: "Tier nicht gefunden"
 
-					<section>
-						Beispiel: HTML
-					</section>
-				</section>
+              // beliebig tief!
+              val tierPreisPlus10 = tier?.preis?.plus(10) ?: 0
+            </code></pre>
+          </section>
 
-				<section>
-					<section>
-						<h3>Unit Testing</h3>
-						<ul>
-							<li>Gewohnte Werkzeuge aus Spring/anderen Libraries</li>
-							<li>Literale als Funktionsnamen</li>
-						</ul>
-						<pre><code data-trim class="kotlin">
-							fun `Funktion x sollte korrektes Ergebnis liefern`() {
-								// code...
-							}
-						</code></pre>
-					</section>
+          <section id="null4">
+            <h4>Unchecked Exceptions</h4>
 
-					<section>
-						Beispiele
-					</section>
-				</section>
+            <p>Exceptions sind Expressions und erfüllen jeden Rückgabetyp</p>
 
-				<section>
-					<section>
-						<h3>Interoperabilität mit Java</h3>
-						<ul>
-							<li>Zugriff auf das <b>gesamte</b> Java-Ökosystem</li>
-							<li>Java => Kotlin</li>
-							<li>Kotlin => Java</li>
-							<li>Plugins für alle großen IDEs und (einfache) Kommandozeilen-Kompilierung</li>
-							<li><pre><code data-trim class="kotlin">import as</code></pre></li>
-						</ul>
-					</section>
+            <pre><code data-trim class="java">
+                @GetMapping("/{id}")
+                public Tier eins(@PathVariable("id") String id) {
+                  Tier tier = tierService.tierMitId(id)
 
-					<section>
-						<p>Unterstützung von großen Firmen</p>
-						<ul>
-							<li>Pivotal (Spring)</li>
-							<li>Google und Android</li>
-							<li>Gradle</li>
-							<li>Atlassian, Uber, Pinterest, Evernote...</li>
-						</ul>
-					</section>
-				</section>
+                  if (tier == null)
+                    throw TierNichtGefundenException()
 
-				<section>
-					<h2>Fragen?</h2>
-				</section>
+                  return tier
+                }
+            </code></pre>
 
-				<section>
-					<h2>Danke fürs Zuhören!</h2><br><br>
-					<a href="https://github.com/happenslol/bunterhund">github.com/happenslol/bunterhund</a><br>
-					<a href="https://kotlin-slides.happens.lol">kotlin-slides.happens.lol</a><br>
-					<a href="https://kotlin-slides.happens.lol/?print-pdf">kotlin-slides.happens.lol/?print-pdf</a><br>
-					<a href="https://kotlinlang.org/docs/tutorials/koans.html">kotlinlang.org/docs/tutorials/koans.html</a>
-				</section>
-			</div>
-		</div>
+            <i class="fas fa-arrow-down"></i>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+            <pre><code data-trim class="kotlin">
+                @GetMapping("/{id}")
+                fun eins(@PathVariable("id") id: String): Tier =
+                  tierService.tierMitId(id) ?: throw TierNichtGefundenException()
+            </code></pre>
+          </section>
+        </section>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+        <section id="classes">
+          <section id="classes1">
+            <h3>Data Classes</h3>
+          </section>
+
+          <section id="classes2">
+            <pre><code data-trim class="kotlin">
+              data class Tier(
+                val id: String = UUID.randomUUID.toString(),
+                val name: String,
+                val art: String,
+                val alter: Int,
+                val preis: Int? = null
+              )
+            </code></pre>
+
+            <pre><code data-trim class="kotlin">
+              val tier = Tier(name = "Rudi", art = "Hund", alter = 5)
+            </code></pre>
+            <br>
+            Getter, Setter, <pre class="inline-code"><code class="kotlin">equals()</code></pre>, <pre class="inline-code"><code class="kotlin">hashCode()</code></pre> <pre class="inline-code"><code class="kotlin">toString()</code></pre> und mehr bereits implementiert!
+          </section>
+
+          <section id="classes3">
+            <h3>Custom getter/setter</h3>
+
+            <pre><code data-trim class="kotlin">
+            data class Mitarbeiter(
+              val id: String = UUID.randomUUID().toString(),
+              val name: Name,
+              val haustierName: String? = null
+            ) {
+              val hatHaustier: Boolean
+                get() = this.haustierName != null
+            }
+            </code></pre>
+            Property existiert nicht, aber Zugriff ist gleich!
+          </section>
+
+          <section id="classes4">
+            <h3>Sealed Classes</h3>
+            <p>"Enum auf Klassenebene"</p>
+            <pre><code data-trim class="kotlin">
+              sealed class TierException : RuntimeException() {
+                class NichtGefunden : TierException()
+                class NichtZumVerkauf : TierException()
+                class GehoertMitarbeiter : TierException()
+              }
+            </code></pre>
+          </section>
+
+          <section id="classes5">
+            <h3>Anwendung mit Spring</h3>
+            <pre><code data-trim class="kotlin">
+              sealed class TierException : RuntimeException() {
+
+                @ResponseStatus(value = HttpStatus.NOT_FOUND)
+                class NichtGefunden : TierException()
+                ...
+              }
+
+              @GetMapping("/{id}")
+              fun eins(@PathVariable("id") id: String): Tier =
+                tierService.tierMitId(id) ?: throw TierException.NichtGefunden()
+            </code></pre>
+          </section>
+        </section>
+
+        <section id="ext">
+          <section id="ext1">
+            <h3>Extension Functions</h3>
+          </section>
+
+          <section id="ext2">
+            <p>In Java:</p>
+            <pre><code class="java">StringUtils, DateUtils, ArrayUtils, SetUtils...</code></pre>
+            <br><br>
+            <p>In Kotlin:</p>
+            <p>Extension Functions! &nbsp;&nbsp;<i class="fas fa-bolt"></i></p>
+          </section>
+
+          <section id="ext3">
+            <pre><code class="kotlin" data-trim>
+            class TierService {
+
+              /*
+               * ...
+               */
+
+              private fun Tier.istValide(): Boolean {
+                if (this.alter <= 0) return false
+                if (this.name.isEmpty()) return false
+        
+                return true
+              } 
+            }
+            </code></pre>
+          </section>
+
+          <section id="ext4">
+            Auf beliebigen Typen!
+
+            <pre><code class="kotlin" data-trim>
+              fun String.auskommentiert(): String = "// " + this
+            </code></pre>
+
+            <pre><code class="kotlin" data-trim>
+            fun List&lt;Tier&gt;.hatHundeZumVerkauf(): Boolean {
+              for (tier in this) {
+                if (tier.art == "Hund" && preis != null)
+                  return true
+              }
+
+              return false
+            }
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <h3>String Formatierung/Literals</h3>	
+        </section>
+
+        <section>
+          <h3>Immutability</h3>
+        </section>
+
+        <section>
+          <section>
+            <h3>Die Kotlin-Standardlibrary</h3>
+          </section>
+
+          <section>
+            <h3>Collection Funktionen</h3>
+          </section>
+
+          <section>
+            <h3>Umgang mit Nullable-Werten</h3>
+          </section>
+
+          <section>
+            <h3>Nützliche Funktionen</h3>
+          </section>
+
+          <section>
+            <h3>Lambdas</h3>
+          </section>
+        </section>
+
+        <section>
+          <h3>Performance</h3>
+          <ul>
+            <li>Optimierung von Funktionen auf Collections</li>
+            <li>Async und Parallelisierung mit Green Threads</li>
+            <li>Sicherheit bei Concurrency durch Immutability</li>
+            <li>Einfache Optimisierungen mit Sprachkonstrukten (z.B. tail recursion)</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h3>Domain Specific Languages</h3>
+          </section>
+
+          <section>
+            Beispiel: Permissions
+          </section>
+
+          <section>
+            Beispiel: HTML
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Unit Testing</h3>
+            <ul>
+              <li>Gewohnte Werkzeuge aus Spring/anderen Libraries</li>
+              <li>Literale als Funktionsnamen</li>
+            </ul>
+            <pre><code data-trim class="kotlin">
+              fun `Funktion x sollte korrektes Ergebnis liefern`() {
+                // code...
+              }
+            </code></pre>
+          </section>
+
+          <section>
+            Beispiele
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Interoperabilität mit Java</h3>
+            <ul>
+              <li>Zugriff auf das <b>gesamte</b> Java-Ökosystem</li>
+              <li>Java => Kotlin</li>
+              <li>Kotlin => Java</li>
+              <li>Plugins für alle großen IDEs und (einfache) Kommandozeilen-Kompilierung</li>
+              <li><pre><code data-trim class="kotlin">import as</code></pre></li>
+            </ul>
+          </section>
+
+          <section>
+            <p>Unterstützung von großen Firmen</p>
+            <ul>
+              <li>Pivotal (Spring)</li>
+              <li>Google und Android</li>
+              <li>Gradle</li>
+              <li>Atlassian, Uber, Pinterest, Evernote...</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>Fragen?</h2>
+        </section>
+
+        <section>
+          <h2>Danke fürs Zuhören!</h2><br><br>
+          <a href="https://github.com/happenslol/bunterhund">github.com/happenslol/bunterhund</a><br>
+          <a href="https://kotlin-slides.happens.lol">kotlin-slides.happens.lol</a><br>
+          <a href="https://kotlin-slides.happens.lol/?print-pdf">kotlin-slides.happens.lol/?print-pdf</a><br>
+          <a href="https://kotlinlang.org/docs/tutorials/koans.html">kotlinlang.org/docs/tutorials/koans.html</a>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
 </html>
