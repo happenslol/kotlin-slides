@@ -412,6 +412,9 @@
               <li>Sicherheit bei concurrency</li>
               <li>Verhinderung von Bugs</li>
             </ul>
+          </section>
+
+          <section id="immut5">
             <h4>Nachteile</h4>
             <ul>
               <li>Performance kann bei extrem großen oder komplexen Objekten leiden</li>
@@ -487,7 +490,7 @@
             <p>Entsprechende Collection-Funktionen benutzen!</p>
 
             <pre><code class="kotlin" data-trim>
-            fun mitarbeiterHaustiere(): List<Tier> =
+            fun mitarbeiterHaustiere(): List&lt;Tier&gt; =
               mitarbeiterRepository.findAll()
                 .mapNotNull { it.haustierName }
                 .mapNotNull { tierRepository.findByName(it) }
@@ -503,14 +506,14 @@
 
           <section id="std7">
             <h4>Beispiel: <pre class="inline-code"><code class="kotlin">let()</code></pre> mit Nullables</h4>
-            <pre></pre><code class="kotlin" data-trim>
+            <pre><code class="kotlin" data-trim>
             fun futterFuerMitarbeiter(id: String): String? {
               val haustierName = mitarbeiterRepository
                 .findById(id)?.haustierName
 
               if (haustierName == null) return null
 
-              val haustierArt = haustierRepository
+              val haustierArt = tierRepository
                 .findByName(haustierName)?.art
 
               if (haustierArt == null) return null
@@ -523,12 +526,12 @@
 
           <section id="std8">
             <h4>Beispiel: <pre class="inline-code"><code class="kotlin">let()</code></pre> mit Nullables</h4>
-            <pre></pre><code class="kotlin" data-trim>
+            <pre><code class="kotlin" data-trim>
             fun futterFuerMitarbeiter(id: String): String? =
               mitarbeiterRepository.findById(id)
                 ?.haustierName
                 ?.let { tierRepository.findByName(it) }
-                ?.let { tierArtRepository.findById(tier.art) }
+                ?.let { tierArtRepository.findById(it.art) }
                 ?.futter
             </code></pre>
           </section>
