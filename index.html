@@ -382,7 +382,42 @@
         </section>
 
         <section id="immut">
-          <h3>Immutability</h3>
+          <section id="immut1">
+            <h3>Immutability</h3>
+          </section>
+
+          <section id="immut2">
+            <p>Geteilter veränderbarer Zustand ist (fast immer) kompliziert.</p>
+          </section>
+
+          <section id="immut3">
+            <pre><code class="kotlin" data-trim>
+            fun haustierHinzufuegen(
+              tier: Tier,
+              mitarbeiter: Mitarbeiter
+            ): Mitarbeiter {
+              val zuSpeichern = mitarbeiter.copy(
+                haustierName = tier.name
+              )
+              
+              return mitarbeiterRepository.save(zuSpeichern)
+            }
+            </code></pre>
+          </section>
+
+          <section id="immut4">
+            <h4>Vorteile</h4>
+            <ul>
+              <li>Code ist einfacher zu lesen</li>
+              <li>Sicherheit bei concurrency</li>
+              <li>Verhinderung von Bugs</li>
+            </ul>
+            <h4>Nachteile</h4>
+            <ul>
+              <li>Performance kann bei extrem großen oder komplexen Objekten leiden</li>
+              <li>Anfänglich oft unintuitiv</li>
+            </ul>
+          </section>
         </section>
 
         <section id="std">
@@ -392,18 +427,150 @@
 
           <section id="std2">
             <h3>Collection Funktionen</h3>
+            <pre><code class="kotlin" data-trim>
+              map(), filter(), fold(), groupBy(), associateBy(),
+              distinct(), any(), count(), ...
+            </code></pre>
+            <p>Für <b>alle</b> Collections!</p>
+            <p>Kombinierbar, verkettbar</p>
           </section>
 
           <section id="std3">
-            <h3>Umgang mit Nullable-Werten</h3>
+            <pre><code class="java" data-trim>
+            public Map&lt;String, Integer&gt; tierArtAnzahl() {
+              List&lt;Tier&gt; tiere = this.tierRepository.findAll();
+              Map&lt;String, Integer&gt; resultat = new HashMap();
+              for (Tier tier : tiere) {
+                resultat.putIfAbsent(tier.getArt(), 0);
+                resultat.put(
+                  tier.getArt(),
+                  resultat.get(tier.getArt()) + 1
+                );
+              }
+      
+              return resultat;
+            }
+            </code></pre>
+
+            <i class="fas fa-arrow-down"></i>
+
+            <pre><code class="kotlin" data-trim>
+            fun tierArtAnzahl(): Map&lt;String, Int&gt; =
+              tierRepository.findAll()
+                .groupBy { it.art }
+                .map { it.key to it.value.count() }
+                .toMap()
+            </code></pre>
           </section>
 
           <section id="std4">
-            <h3>Nützliche Funktionen</h3>
+            <pre><code class="kotlin" data-trim>
+            fun haustiereHinzufuegen(
+              paare: Map&lt;Mitarbeiter, Tier&gt;
+            ): List&lt;Mitarbeiter&gt; {
+              val zuSpeichern = paare
+                .filterKeys { mitarbeiterRepository.findById(it.id) != null }
+                .filterValues { tierRepository.findById(it.id) != null }
+                .map { (mitarbeiter, tier) -&gt;
+                  mitarbeiter.copy(
+                    haustierName = tier.name
+                  )
+                }
+      
+              return mitarbeiterRepository.saveAll(zuSpeichern)
+            }
+            </code></pre>
           </section>
 
           <section id="std5">
+            <h3>Umgang mit Nullable-Werten</h3>
+            <p>Entsprechende Collection-Funktionen benutzen!</p>
+
+            <pre><code class="kotlin" data-trim>
+            fun mitarbeiterHaustiere(): List<Tier> =
+              mitarbeiterRepository.findAll()
+                .mapNotNull { it.haustierName }
+                .mapNotNull { tierRepository.findByName(it) }
+            </code></pre>
+          </section>
+
+          <section id="std6">
+            <h3>Nützliche Funktionen (Standard.kt)</h3>
+            <pre></pre><code class="kotlin" data-trim>
+              let(), apply(), with(), run(), use(), also(), ...
+            </code></pre>
+          </section>
+
+          <section id="std7">
+            <h4>Beispiel: <pre class="inline-code"><code class="kotlin">let()</code></pre> mit Nullables</h4>
+            <pre></pre><code class="kotlin" data-trim>
+            fun futterFuerMitarbeiter(id: String): String? {
+              val haustierName = mitarbeiterRepository
+                .findById(id)?.haustierName
+
+              if (haustierName == null) return null
+
+              val haustierArt = haustierRepository
+                .findByName(haustierName)?.art
+
+              if (haustierArt == null) return null
+
+              return tierArtRepository
+                .findById(haustierArt)?.futter
+            }
+            </code></pre>
+          </section>
+
+          <section id="std8">
+            <h4>Beispiel: <pre class="inline-code"><code class="kotlin">let()</code></pre> mit Nullables</h4>
+            <pre></pre><code class="kotlin" data-trim>
+            fun futterFuerMitarbeiter(id: String): String? =
+              mitarbeiterRepository.findById(id)
+                ?.haustierName
+                ?.let { tierRepository.findByName(it) }
+                ?.let { tierArtRepository.findById(tier.art) }
+                ?.futter
+            </code></pre>
+          </section>
+
+          <section id="std9">
+            <h4>Weitere Beispiele</h4>
+            <a href="http://beust.com/weblog/2015/10/30/exploring-the-kotlin-standard-library/">
+              beust.com/weblog/2015/10/30/exploring-the-kotlin-standard-library
+            </a>
+          </section>
+
+          <section id="std10">
             <h3>Lambdas</h3>
+            <p>Kurzform für Lambda-Aufrufe</p>
+            <p>Letztes Argument muss Lambda sein</p>
+
+            <pre><code class="kotlin" data-trim>
+              fun machEtwas(() -> Int) { ... }
+            </code></pre>
+
+            <i class="fas fa-arrow-down"></i>
+
+            <pre><code class="kotlin" data-trim>
+              machEtwas {
+                println("Hallo Welt!")
+                123
+              }
+            </code></pre>
+          </section>
+
+          <section id="std11">
+            <h4>map</h4>
+            <pre><code class="kotlin" data-trim>
+            fun &lt;T, R&gt; Iterable&lt;T&gt;.map(
+              transform: (T) -&gt; R
+            ): Iterable&lt;R&gt; { ... }
+            </code></pre>
+
+            <h4>let</h4>
+            <pre><code class="kotlin" data-trim>
+            fun &lt;T, R&gt; T.let(f: (T) -> R): R = f(this)
+            </code></pre>
           </section>
         </section>
 
