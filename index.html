@@ -117,19 +117,13 @@
           </section>
 
           <section id="syntax2">
-            <h3>Syntax und Unterschiede zu Java</h3>
+            <h4>Syntax und Unterschiede zu Java</h4>
             <ul>
               <li>Typen-Inferenz (<pre class="inline-code"><code class="kotlin">var</code></pre>/<pre class="inline-code"><code class="kotlin">val</code></pre>)</li>
               <li>
                 Funktionen<br>
                 <pre><code data-trim class="kotlin">
                   fun funktionsName(parameter: Typ) : Rückgabe {}
-                </code></pre>
-              </li>
-              <li>
-                Konstruktoren<br>
-                <pre><code data-trim class="kotlin">
-                  val instanzierterTyp = Typ(parameter1, parameter2)
                 </code></pre>
               </li>
               <li>Mehrere public Klassen/Interfaces per Datei</li>
@@ -141,7 +135,7 @@
           </section>
 
           <section id="syntax3">
-            <h3>Syntax und Unterschiede zu Java</h3>
+            <h4>Syntax und Unterschiede zu Java</h4>
             <b>Expressions / Assignments</b>
             <pre><code data-trim class="kotlin">
               val test = { "Hallo Welt!" }
@@ -159,7 +153,41 @@
           </section>
 
           <section id="syntax4">
-            <h3>Syntax und Unterschiede zu Java</h3>
+            <h4>Syntax und Unterschiede zu Java</h4>
+              <p>Konstruktoren</p>
+              <pre><code data-trim class="kotlin">
+                class Beispiel(parameter1: String, parameter2: Int)
+              </code></pre>
+
+              <p>Instanzierung</p>
+              <pre><code data-trim class="kotlin">
+                val instanzierterTyp = Typ("Test", 123)
+              </code></pre>
+          </section>
+
+          <section id="syntax5">
+            <h4>Syntax und Unterschiede zu Java</h4>
+              <p>Properties können direkt im Konstruktor deklariert werden!</p>
+
+              <pre><code data-trim class="kotlin">
+                class Beispiel(param1: String, param2: Int) {
+                  val property1 = param1
+                  val property2 = param2
+                }
+              </code></pre>
+
+              <i class="fas fa-arrow-down"></i>
+
+              <pre><code data-trim class="kotlin">
+                class Beispiel(
+                  val property1: String,
+                  val property2: Int
+                )
+              </code></pre>
+          </section>
+
+          <section id="syntax6">
+            <h4>Syntax und Unterschiede zu Java</h4>
             <h5>Named parameters!</h5>
 
             <pre><code data-trim class="kotlin">
@@ -235,6 +263,24 @@
                   tierService.tierMitId(id) ?: throw TierNichtGefundenException()
             </code></pre>
           </section>
+        </section>
+
+        <section id="smart">
+          <h3>Smart casts</h3>
+          <pre><code data-trim class="kotlin">
+            if (variable is String) {
+              // Kein casten mehr nötig!
+            }
+          </code></pre>
+
+          <pre><code data-trim class="kotlin">
+            val variable: String? = ...
+
+            if (variable != null) {
+              // Variable ist in diesem scope
+              // String und nicht String?
+            }
+          </code></pre>
         </section>
 
         <section id="classes">
@@ -590,6 +636,7 @@
         <section id="dsl">
           <section id="dsl1">
             <h3>Domain Specific Languages</h3>
+            <h3>Operator Overloading</h3>
           </section>
 
           <section id="dsl2">
