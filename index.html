@@ -135,17 +135,26 @@
           <section id="syntax3">
             <b>Expressions / Assignments</b>
             <pre><code data-trim class="kotlin">
-              val test = {
-                // Berechnungen...
-
-                "Hallo Welt!"
-              }
-              // test == "Hallo Welt!"
-
               val test = if (bedingung) "Hallo" else "Welt"
             </code></pre>
 
-            <br><br>
+            <pre><code data-trim class="kotlin">
+              val test = when (wert) {
+                "Wert 1" -> "Hallo"
+                "Wert 2" -> "Welt"
+                else -> "Standard"
+              }
+            </code></pre>
+
+            <pre><code data-trim class="kotlin">
+              val test = try {
+                Integer.parseInt("15")
+              } catch (e: NumberFormatException) {
+                0
+              }
+            </code></pre>
+
+            <br>
             <small>Funktionen können mit Kurzschreibweise Expressions zugewiesen bekommen:</small>
             <pre><code data-trim class="kotlin">
               fun halloWelt(): String = "Hallo Welt!"
@@ -211,9 +220,9 @@
 
           <section id="null2">
             <pre><code data-trim class="kotlin">
-              fun tierMitName(name: String): Tier?
+              fun tierMitNamenFinden(name: String): Tier?
 
-              val tier = tierMitName("Peter")
+              val tier = tierMitNamenFinden("Peter")
 
               // fehler!
               print(tier.art)
@@ -224,9 +233,9 @@
             <h4>Lösung</h4>
             Safe call <pre class="inline-code"><code class="kotlin">?</code></pre> und Elvis-Operator <pre class="inline-code"><code class="kotlin">?:</code></pre>
             <pre><code data-trim class="kotlin">
-              fun tierMitName(name: String): Tier?
+              fun tierMitNamenFinden(name: String): Tier?
 
-              val tier = tierMitName("Peter")
+              val tier = tierMitNamenFinden("Peter")
 
               val tierArt = tier?.art ?: "Tier nicht gefunden"
 
@@ -321,7 +330,7 @@
                 get() = this.haustierName != null
             }
             </code></pre>
-            Property existiert nicht, aber Zugriff ist gleich!
+            Feld existiert nicht, aber Zugriff ist gleich!
           </section>
 
           <section id="classes5">
@@ -425,10 +434,16 @@
             
             <pre><code class="kotlin" data-trim>
             fun Tier.alterText(): String =
-              "${this.name} ist ${this.alter} Jahre alt."
+              "$name ist $alter Jahre alt."
             </code></pre>
 
             <pre class="inline-code"><code class="kotlin">toString()</code></pre> automatisch!
+
+            <br><br>
+            <small>Kann auch expressions enthalten!</small>
+            <pre><code class="kotlin" data-trim>
+            "${1 + 2}" == "3"
+            </code></pre>
           </section>
 
           <section id="stringform2">
@@ -471,7 +486,7 @@
           <section id="immut4">
             <h4>Vorteile</h4>
             <ul>
-              <li>Code ist einfacher zu lesen</li>
+              <li>Code ist einfacher nachzuvollziehen</li>
               <li>Sicherheit bei concurrency</li>
               <li>Verhinderung von Bugs</li>
             </ul>
@@ -525,8 +540,7 @@
             fun tierArtAnzahl(): Map&lt;String, Int&gt; =
               tierRepository.findAll()
                 .groupBy { it.art }
-                .map { it.key to it.value.count() }
-                .toMap()
+                .mapValues { it.value.count() }
             </code></pre>
           </section>
 
@@ -614,7 +628,7 @@
             <p>Letztes Argument muss Lambda sein</p>
 
             <pre><code class="kotlin" data-trim>
-              fun machEtwas(() -> Int) { ... }
+              fun machEtwas(lambda: () -> Int) { ... }
             </code></pre>
 
             <i class="fas fa-arrow-down"></i>
